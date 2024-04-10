@@ -1,0 +1,70 @@
+body{
+min-height: 100vh;
+overflow-y: scroll !important
+}
+html {
+  scroll-padding-top:58px; /* height of sticky header */
+}
+
+
+.carousel-item img{
+  height: 16rem;
+  width: 100%;
+}
+
+#cats-container{
+  height: 16rem;
+  width: 100%;
+}
+
+#cats-carousel{
+  width: 20rem;
+  height: 100%;
+}
+#cats-vertical{
+  height: 12rem;
+  width: 100%;
+  margin: 1rem;
+  overflow: auto;
+}
+#cats-vertical img{
+  transition: all;
+  height: 16rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+#cats-vertical::-webkit-scrollbar {
+  width: 10px;
+  background-color: #c1cadc;
+}
+#cats-vertical::-webkit-scrollbar-thumb {
+  background: #1a131a;
+}
+#right-vertical-contents{
+  width: 24rem;
+  
+ /* max-width: 90%; */
+}
+#more-cats-btn{
+  min-width: 24rem;
+}
+
+nav{
+
+transition: all;
+
+
+}
+#section-1-main{
+  /* margin-top: 58px; */
+}
+.nav-item.head-2{
+  margin-left: 2rem;
+}
+#section-2{
+  /* margin-top: 58px; */
+}
+header{
+  height: 58px;
+
+}
