@@ -1,36 +1,45 @@
 body{
 min-height: 100vh;
-overflow-y: scroll !important
+
 }
 html {
-  scroll-padding-top:58px; /* height of sticky header */
+  scroll-padding-top:58px;
+}
+header{
+  height: 58px;
+
 }
 
+section.section{
+  display:none;
+}
+section.section.active{
+  display:block
+}
 
 .carousel-item img{
-  height: 16rem;
+  height: 22rem;
   width: 100%;
 }
 
 #cats-container{
-  height: 16rem;
-  width: 100%;
+  height: inherit;
+  /* width: 100%; */
 }
 
 #cats-carousel{
-  width: 20rem;
+  width: 22rem;
   height: 100%;
 }
 #cats-vertical{
-  height: 12rem;
-  width: 100%;
-  margin: 1rem;
+  height: 19rem;
+  margin: 1rem 0;
   overflow: auto;
 }
 #cats-vertical img{
-  transition: all;
-  height: 16rem;
-  margin-bottom: 1rem;
+
+  height: 19rem;
+  /* margin-bottom: 1rem; */
   width: 100%;
 }
 #cats-vertical::-webkit-scrollbar {
@@ -46,7 +55,7 @@ html {
  /* max-width: 90%; */
 }
 #more-cats-btn{
-  min-width: 24rem;
+  min-width: 18rem;
 }
 
 nav{
@@ -63,8 +72,4 @@ transition: all;
 }
 #section-2{
   /* margin-top: 58px; */
-}
-header{
-  height: 58px;
-
 }

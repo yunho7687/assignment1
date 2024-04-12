@@ -10920,12 +10920,142 @@
 
 // #endregion
 
+(() => {
+  /*!
+   * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
+   * Copyright 2011-2024 The Bootstrap Authors
+   * Licensed under the Creative Commons Attribution 3.0 Unported License.
+   */
+  "use strict";
+
+  const getStoredTheme = () => localStorage.getItem("theme");
+  const setStoredTheme = (theme) => localStorage.setItem("theme", theme);
+
+  const getPreferredTheme = () => {
+    const storedTheme = getStoredTheme();
+    if (storedTheme) {
+      return storedTheme;
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+
+  const setTheme = (theme) => {
+    if (theme === "auto") {
+      document.documentElement.setAttribute(
+        "data-bs-theme",
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+      );
+    } else {
+      document.documentElement.setAttribute("data-bs-theme", theme);
+    }
+  };
+
+  setTheme(getPreferredTheme());
+
+  const showActiveTheme = (theme, focus = false) => {
+    const themeSwitcher = document.querySelector("#bd-theme");
+
+    if (!themeSwitcher) {
+      return;
+    }
+
+    const themeSwitcherText = document.querySelector("#bd-theme-text");
+    const activeThemeIcon = document.querySelector(".theme-icon-active use");
+    const btnToActive = document.querySelector(
+      `[data-bs-theme-value="${theme}"]`
+    );
+    const svgOfActiveBtn = btnToActive
+      .querySelector("svg use")
+      .getAttribute("href");
+
+    document.querySelectorAll("[data-bs-theme-value]").forEach((element) => {
+      element.classList.remove("active");
+      element.setAttribute("aria-pressed", "false");
+    });
+
+    btnToActive.classList.add("active");
+    btnToActive.setAttribute("aria-pressed", "true");
+    activeThemeIcon.setAttribute("href", svgOfActiveBtn);
+    const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`;
+    themeSwitcher.setAttribute("aria-label", themeSwitcherLabel);
+
+    if (focus) {
+      themeSwitcher.focus();
+    }
+  };
+
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", () => {
+      const storedTheme = getStoredTheme();
+      if (storedTheme !== "light" && storedTheme !== "dark") {
+        setTheme(getPreferredTheme());
+      }
+    });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    showActiveTheme(getPreferredTheme());
+
+    document.querySelectorAll("[data-bs-theme-value]").forEach((toggle) => {
+      toggle.addEventListener("click", () => {
+        const theme = toggle.getAttribute("data-bs-theme-value");
+        setStoredTheme(theme);
+        setTheme(theme);
+        showActiveTheme(theme, true);
+      });
+    });
+  });
+})();
+
+function throttle(func, delay) {
+  let timeout = null;
+  return function () {
+    if (!timeout) {
+      timeout = setTimeout(function () {
+        func.apply(this, arguments);
+        timeout = null;
+      }, delay);
+    }
+  };
+}
+
+function renderSrollCats(catLength,catArrayURL,catsVertical) {
+  for (let i = catLength.length; i < catArrayURL.length; i++) {
+    catsVertical.append(
+      $("<a>")
+        .attr({ href: catArrayURL[i].url, target: "_blank" })
+        .append(
+          // Append an anchor tag
+          $("<img>")
+            .attr({
+              // Append an image tag
+              src: catArrayURL[i].url,
+              alt: "a cat or cats",
+            })
+            .addClass("rounded-5 object-fit-cover border border-1 p-1") // Add classes to the image
+        )
+    );
+  }
+  catLength.length = catArrayURL.length;
+}
+
+function toggleCatMeow() {
+  const toastLiveExample = document.getElementById("liveToast");
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+  toastBootstrap.show();
+}
+
 const yunhoAvatarLink = "https://avatars.githubusercontent.com/u/75521446?v=4";
 
 $(document).ready(function () {
   const catArrayURL = [];
 
-  let catLength = catArrayURL.length;
+  const catLength ={length:catArrayURL.length} ;
 
   const titleIntro = $("#title-intro");
   const catsContainer = $("#cats-container");
@@ -10933,7 +11063,8 @@ $(document).ready(function () {
   const moreCatsButton = $("#more-cats-btn");
   const fakeLoading = $("#fake-loading");
   const toTitleIntro = $("#to-title-intro");
-
+  const liveToastMeow = $("#liveToast");
+  const navBarCloseBtn = $("#nav-close-button");
   getCats();
 
   $(".navbar-brand").on("click", function () {
@@ -10941,23 +11072,19 @@ $(document).ready(function () {
   });
 
   toTitleIntro.on("click", function () {
-    // setTimeout(function () {
-    //   $("#nav").slideUp(100);
-    // }, 600);
-
-    $("#nav-close-button").click();
-
-    // $("#section-1-main").delay(1500).animate({ scrollTop: 90 }, 100);
+    navBarCloseBtn.click();
   });
 
   moreCatsButton.on("click", function () {
     catsContainer.empty();
     catsVertical.empty();
     catArrayURL.splice(0, catArrayURL.length);
-    catLength = 0;
+    catLength.length = 0;
     catsContainer.addClass();
     getCats();
   });
+
+  $(window).on("scroll", scrollCatsHandler);
 
   catsVertical.on(
     "scroll",
@@ -10980,9 +11107,10 @@ $(document).ready(function () {
       function (data, status, xhr) {
         titleIntro.removeClass("placeholder");
         fakeLoading.empty();
-
+        console.log("Meow ~ ");
         console.log(status);
         console.log("status code:", xhr.status);
+
         $.each(data, function (index, value) {
           catArrayURL.push({ url: value.url, id: value.id });
           if (catsContainer.children().length > 2) {
@@ -11008,28 +11136,11 @@ $(document).ready(function () {
           $("#" + value.id).attr("src", catArrayURL[index].url);
           catsContainer.children().eq(0).addClass("active");
         });
-        renderSrollCats();
+        renderSrollCats(catLength, catArrayURL,catsVertical);
+        $("span").removeClass("placeholder");
+        toggleCatMeow();
       }
     );
-  }
-  function renderSrollCats() {
-    for (let i = catLength; i < catArrayURL.length; i++) {
-      catsVertical.append(
-        $("<a>")
-          .attr({ href: catArrayURL[i].url, target: "_blank" })
-          .append(
-            // Append an anchor tag
-            $("<img>")
-              .attr({
-                // Append an image tag
-                src: catArrayURL[i].url,
-                alt: "a cat or cats",
-              })
-              .addClass("rounded-5 object-fit-cover border border-1 p-1") // Add classes to the image
-          )
-      );
-    }
-    catLength = catArrayURL.length;
   }
 
   function scrollCatsHandler() {
@@ -11038,27 +11149,16 @@ $(document).ready(function () {
     // Get the distance from the target element to the top of the document.
     let targetOffsetTop = catsVertical.offset().top;
     // Calculate the distance between the scroll position and the top of the target element.
-    let scrollDistance = $(window).scrollTop() + 300;
+    let scrollDistance = $(window).scrollTop() + 500;
 
     if (scrollDistance >= targetOffsetTop) {
       catsVertical
         .delay(100)
         .animate({ scrollTop: 500 }, 1000)
         .animate({ scrollTop: 0 }, 500)
-        .animate({ scrollTop: 60 }, 250);
+        .animate({ scrollTop: 160 }, 250);
       // $("#cats-vertical").scrollTop(20);
       $(window).off("scroll", scrollCatsHandler);
     }
   }
 });
-function throttle(func, delay) {
-	let timeout = null;
-	return function() {
-	  if (!timeout) {
-		timeout = setTimeout(function() {
-		  func.apply(this, arguments);
-		  timeout = null;
-		}, delay);
-	  }
-	};
-  }
