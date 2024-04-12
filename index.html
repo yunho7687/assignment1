@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Yunho Ding(24094053)</title>
+    <link rel="icon" href="./static/favicon.ico" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -67,9 +68,7 @@
           var old = typeof window.onclick === "function" && window.onclick;
           console.log(typeof window.onclick === "function");
           window.onclick = function (event) {
-            console.log(old() + "www");
             old && old();
-            console.log("此时的old");
             createHeart(event);
           };
         }
@@ -110,13 +109,16 @@
       })(window, document);
     </script>
   </head>
-  <body class=" ">
+  <body class="fw-light">
     <header>
       <nav id="nav" class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
           <div class="d-flex flex-grow-1 justify-content-betwee">
-            <a class="navbar-brand flex-grow-1" href="#"
-              >Yunho Ding 24094053
+            <a
+              id="title-section-selector"
+              class="navbar-brand flex-grow-1"
+              href="#"
+              >Select Sections
             </a>
             <div class="pe-3 nav-item dropdown">
               <button
@@ -136,7 +138,9 @@
                 >
                   <use href="#sun-fill"></use>
                 </svg>
-                <span class="d-none ms-2" id="bd-theme-text">Toggle theme</span>
+                <span class="d-sm-block d-none ms-2" id="bd-theme-text"
+                  >Theme</span
+                >
               </button>
               <ul
                 class="dropdown-menu dropdown-menu-end"
@@ -224,6 +228,7 @@
             </div>
           </div>
           <button
+            id="navbar-toggler"
             class="navbar-toggler"
             type="button"
             data-bs-toggle="offcanvas"
@@ -240,7 +245,9 @@
             aria-labelledby="offcanvasNavbarLabel"
           >
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">🐱</h5>
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                🐱 by Yunho
+              </h5>
               <button
                 id="nav-close-button"
                 type="button"
@@ -313,256 +320,498 @@
     <main>
       <section id="section-1" class="container section active">
         <div id="section-1-main" class="container">
+          <hr />
           <div id="section-intro" class="container mt-2">
             <h1 class="placeholder-glow">
               <span id="title-intro" class="placeholder col-12"
                 >Introduction to Hyperlinks</span
               >
             </h1>
-            <div id="fake-loading">
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
+            <div>
+              <div>
+                <p>
+                  <a href="https://en.wikipedia.org/wiki/Hyperlink"
+                    >Hyperlinks</a
+                  >, or just "links", are what make the web a web. They connect
+                  countless pages and resources, making the internet a
+                  navigable, interlinked universe. Without hyperlinks, we would
+                  be left manually entering URLs, a cumbersome process for
+                  anyone seeking information swiftly and efficiently.
+                </p>
 
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
+                <p>
+                  The concept of interconnected information originated in the
+                  1940s with
+                  <a href="https://en.wikipedia.org/wiki/Vannevar_Bush"
+                    >Vannevar Bush</a
+                  >, who imagined a vast "network of information". However, it
+                  wasn't until 1989 that
+                  <a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee"
+                    >Tim Berners-Lee</a
+                  >, best known as the inventor of the World Wide Web, the HTML
+                  markup language, the URL system, and HTTP,implemented
+                  hyperlinks as a fundamental component of the World Wide Web,
+                  revolutionizing how we access information.
+                </p>
+                <div class="d-flex gap-2 justify-content-center">
+                  <figure class="figure text-center col-md-4">
+                    <a
+                      target="_blank"
+                      href="https://en.wikipedia.org/wiki/Vannevar_Bush"
+                    >
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Vannevar_Bush.jpg/440px-Vannevar_Bush.jpg"
+                        class="figure-img object-fit-cover img-fluid rounded-4"
+                        alt="Bush in the 1940s"
+                      />
+                    </a>
 
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
+                    <figcaption class="figure-caption">
+                      Bush in the 1940s
+                    </figcaption>
+                  </figure>
+                  <figure class="figure text-center col-md-4">
+                    <a
+                      target="_blank"
+                      href="https://en.wikipedia.org/wiki/Tim_Berners-Lee"
+                    >
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Sir_Tim_Berners-Lee_%28cropped%29.jpg/440px-Sir_Tim_Berners-Lee_%28cropped%29.jpg"
+                        class="figure-img object-fit-cover img-fluid rounded-4"
+                        alt="Berners-Lee in 2014"
+                      />
+                    </a>
 
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-            </div>
-
-            <div id="xddddd">
-              <div
-                data-message-author-role="assistant"
-                data-message-id="c83a64ac-f32c-4636-88b1-3e1f174adce3"
-                dir="auto"
-                class="min-h-[20px] text-message flex flex-col items-start gap-3 whitespace-pre-wrap break-words [.text-message+&amp;]:mt-5 overflow-x-auto"
-              >
-                <div
-                  class="markdown prose w-full break-words dark:prose-invert light"
-                >
-                  <h3>
-                    Understanding Hyperlinks: The Navigational Threads of the
-                    Internet
-                  </h3>
-                  <p>
-                    <strong
-                      >Hyperlinks, or just 'links', are what make the web a web.
-                      They connect countless pages and resources, making the
-                      internet a navigable, interlinked universe. Without
-                      hyperlinks, we would be left manually entering URLs, a
-                      cumbersome process for anyone seeking information swiftly
-                      and efficiently.</strong
-                    >
-                  </p>
-                  <p>
-                    <strong
-                      >The concept of interconnected information originated in
-                      the 1940s with visionary Vannevar Bush, who imagined a
-                      vast 'network of information'. However, it wasn’t until
-                      1989 that Tim Berners-Lee implemented hyperlinks as a
-                      fundamental component of the World Wide Web, thereby
-                      revolutionizing how we access information.</strong
-                    >
-                  </p>
-                  <h3>Detailed Use of Hyperlinks in Web Development</h3>
-                  <h4>The Anchor Tag</h4>
-                  <p>
-                    <strong
-                      >The most common way to create a hyperlink is using the
-                      HTML anchor tag <code>&lt;a&gt;</code>. This tag includes
-                      several key attributes:</strong
-                    >
-                  </p>
-                  <ul>
-                    <li>
-                      <strong><code>href</code></strong
-                      >: Specifies the URL of the page the link goes to.
-                    </li>
-                    <li>
-                      <strong><code>title</code></strong
-                      >: Offers additional information about the link when the
-                      user hovers over it.
-                    </li>
-                    <li>
-                      <strong><code>target</code></strong
-                      >: Decides whether the linked document opens in a new
-                      window or the current one. For example:
-                      <!-- <pre><div class="dark bg-gray-950 rounded-md"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>html</span><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 3.5C10.8954 3.5 10 4.39543 10 5.5H14C14 4.39543 13.1046 3.5 12 3.5ZM8.53513 3.5C9.22675 2.3044 10.5194 1.5 12 1.5C13.4806 1.5 14.7733 2.3044 15.4649 3.5H17.25C18.9069 3.5 20.25 4.84315 20.25 6.5V18.5C20.25 20.1569 19.1569 21.5 17.25 21.5H6.75C5.09315 21.5 3.75 20.1569 3.75 18.5V6.5C3.75 4.84315 5.09315 3.5 6.75 3.5H8.53513ZM8 5.5H6.75C6.19772 5.5 5.75 5.94772 5.75 6.5V18.5C5.75 19.0523 6.19772 19.5 6.75 19.5H17.25C18.0523 19.5 18.25 19.0523 18.25 18.5V6.5C18.25 5.94772 17.8023 5.5 17.25 5.5H16C16 6.60457 15.1046 7.5 14 7.5H10C8.89543 7.5 8 6.60457 8 5.5Z" fill="currentColor"></path></svg>Copy code</button></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.example.com"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Visit Example!"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>Visit Example<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-</code></div></div></pre> -->
-                      <strong
-                        >This tag creates a link that, when clicked, opens "<a
-                          target="_new"
-                          href="http://www.example.com"
-                          >www.example.com</a
-                        >" in a new tab, allowing the user to keep the original
-                        page open.</strong
-                      >
-                    </li>
-                  </ul>
-                  <h4>Linking Images</h4>
-                  <p>
-                    <strong
-                      >Hyperlinks can also be used to make images clickable,
-                      using the <code>&lt;a&gt;</code> tag wrapped around an
-                      <code>&lt;img&gt;</code> tag:</strong
-                    >
-                  </p>
-                  <!-- <pre><div class="dark bg-gray-950 rounded-md"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>html</span><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 3.5C10.8954 3.5 10 4.39543 10 5.5H14C14 4.39543 13.1046 3.5 12 3.5ZM8.53513 3.5C9.22675 2.3044 10.5194 1.5 12 1.5C13.4806 1.5 14.7733 2.3044 15.4649 3.5H17.25C18.9069 3.5 20.25 4.84315 20.25 6.5V18.5C20.25 20.1569 19.1569 21.5 17.25 21.5H6.75C5.09315 21.5 3.75 20.1569 3.75 18.5V6.5C3.75 4.84315 5.09315 3.5 6.75 3.5H8.53513ZM8 5.5H6.75C6.19772 5.5 5.75 5.94772 5.75 6.5V18.5C5.75 19.0523 6.19772 19.5 6.75 19.5H17.25C18.0523 19.5 18.25 19.0523 18.25 18.5V6.5C18.25 5.94772 17.8023 5.5 17.25 5.5H16C16 6.60457 15.1046 7.5 14 7.5H10C8.89543 7.5 8 6.60457 8 5.5Z" fill="currentColor"></path></svg>Copy code</button></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.example.com"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"logo.png"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Website Logo"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-</code></div></div></pre> -->
-                  <p>
-                    <strong
-                      >Here, clicking the image sends the user to the specified
-                      URL. This is particularly useful in web design for logos
-                      and navigational graphics.</strong
-                    >
-                  </p>
-                  <h4>Background Images</h4>
-                  <p>
-                    <strong
-                      >CSS can be used to link background images which are not
-                      clickable but enhance the aesthetic of a webpage. The CSS
-                      property <code>background-image</code> is used to assign
-                      an image to the background of an element:</strong
-                    >
-                  </p>
-                  <!-- <pre><div class="dark bg-gray-950 rounded-md"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>css</span><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 3.5C10.8954 3.5 10 4.39543 10 5.5H14C14 4.39543 13.1046 3.5 12 3.5ZM8.53513 3.5C9.22675 2.3044 10.5194 1.5 12 1.5C13.4806 1.5 14.7733 2.3044 15.4649 3.5H17.25C18.9069 3.5 20.25 4.84315 20.25 6.5V18.5C20.25 20.1569 19.1569 21.5 17.25 21.5H6.75C5.09315 21.5 3.75 20.1569 3.75 18.5V6.5C3.75 4.84315 5.09315 3.5 6.75 3.5H8.53513ZM8 5.5H6.75C6.19772 5.5 5.75 5.94772 5.75 6.5V18.5C5.75 19.0523 6.19772 19.5 6.75 19.5H17.25C18.0523 19.5 18.25 19.0523 18.25 18.5V6.5C18.25 5.94772 17.8023 5.5 17.25 5.5H16C16 6.60457 15.1046 7.5 14 7.5H10C8.89543 7.5 8 6.60457 8 5.5Z" fill="currentColor"></path></svg>Copy code</button></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-css"><span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'background.jpg'</span>);
-}
-</code></div></div></pre> -->
-                  <p>
-                    <strong
-                      >Although this doesn’t create a hyperlink, it’s important
-                      for embedding resources linked via URLs.</strong
-                    >
-                  </p>
-                  <h3>How Browsers Parse and Process Hyperlinks</h3>
-                  <h4>URL Parsing</h4>
-                  <p>
-                    <strong
-                      >When a hyperlink is clicked, the browser first parses the
-                      <code>href</code> attribute of the anchor tag to determine
-                      the destination URL. It checks the validity of the URL and
-                      prepares to initiate a network request.</strong
-                    >
-                  </p>
-                  <h4>DNS Lookup</h4>
-                  <p>
-                    <strong
-                      >The browser performs a DNS lookup to convert the domain
-                      name into an IP address. This step is crucial as it tells
-                      the browser where to send its request.</strong
-                    >
-                  </p>
-                  <h4>HTTP Request</h4>
-                  <p>
-                    <strong
-                      >Following the DNS resolution, the browser sends an HTTP
-                      GET request to the server associated with the IP address.
-                      The GET request specifies the path to the resource that
-                      needs to be fetched.</strong
-                    >
-                  </p>
-                  <h4>Server Response and Rendering</h4>
-                  <p>
-                    <strong
-                      >The server receives the request, processes it, and sends
-                      back the requested page along with associated resources
-                      like images, scripts, and CSS files. The browser then
-                      renders the page for the user to view. This entire
-                      process, from click to display, typically happens within a
-                      few milliseconds, thanks to modern internet
-                      infrastructure.</strong
-                    >
-                  </p>
-                  <h3>
-                    In Practice: Using Hyperlinks for Improved User Experience
-                  </h3>
-                  <p>
-                    Developers can enhance user experience by strategically
-                    using hyperlinks to guide users through a website, create
-                    engaging interactions, and facilitate easy navigation. For
-                    instance, navigation menus are often built with lists of
-                    hyperlinks, and call-to-action buttons are implemented using
-                    anchor tags styled with CSS to draw attention and encourage
-                    clicks.
-                  </p>
-                  <p>
-                    <strong
-                      >Moreover, AJAX (Asynchronous JavaScript and XML) can be
-                      used in conjunction with hyperlinks to load new content
-                      without a full page reload, keeping the user on the same
-                      page but updating parts of it dynamically. This is
-                      commonly seen in online forms, search results, and social
-                      media feeds.</strong
-                    >
-                  </p>
-                  <h3>Conclusion</h3>
-                  <p>
-                    <strong
-                      >Hyperlinks are fundamental to the fabric of the web. They
-                      not only enable the vast interconnectedness of information
-                      but also enhance the efficiency and aesthetics of digital
-                      navigation. Understanding the technical aspects of
-                      hyperlink implementation and the processes involved in
-                      their execution provides developers with the tools to
-                      create more dynamic, user-friendly websites.</strong
-                    >
-                  </p>
-                  <p>
-                    <strong
-                      >With ongoing advancements in web technology and
-                      standards, the role and functionality of hyperlinks
-                      continue to evolve, offering new and innovative ways to
-                      access and interact with content online. As we look to the
-                      future, the potential for hyperlinks to integrate more
-                      deeply with emerging technologies suggests a continuing
-                      evolution of the internet's navigational
-                      capabilities.</strong
-                    >
-                  </p>
-                  <p>
-                    <strong
-                      >This comprehensive exploration of hyperlinks, from
-                      technical specifics to practical applications, underscores
-                      their critical role in web development and highlights the
-                      sophistication behind what appears to be a simple
-                      click.</strong
-                    >
-                  </p>
+                    <figcaption class="figure-caption">
+                      Berners-Lee in 2014
+                    </figcaption>
+                  </figure>
                 </div>
+
+                <p>
+                  The most classic examples of hyperlinks are
+                  <a
+                    href="https://www.google.com"
+                    title="jump to Google"
+                    rel="external"
+                    target="_blank"
+                    >Google</a
+                  >
+                  and
+                  <a
+                    href="https://www.wikipedia.org"
+                    title="jump to Wikipedia"
+                    rel="external"
+                    target="_blank"
+                    >Wikipedia</a
+                  >, where users can freely click on links they wish to view,
+                  searching for content that interests them or is helpful.
+                  Hyperlinks simplify the process, as one only needs to click on
+                  the marked elements to navigate to the relevant pages.
+                </p>
+                <div class="d-flex flex-md-row flex-column">
+                  <p class="col-md-8">
+                    In
+                    <a
+                      href="https://www.wikipedia.org"
+                      title="jump to Wikipedia"
+                      rel="external"
+                      target="_blank"
+                      >Wikipedia</a
+                    >, you will find that as you browse an entry, within the
+                    detail interface, many other entries, or terms, are included
+                    in the explanatory content. You can hover your cursor over
+                    these terms to see related Wikipedia entries. This feature
+                    is enabled by
+                    <a
+                      href="https://en.wikipedia.org/wiki/Ajax_(programming)"
+                      title="jump to Ajax (programming) in Wikipeida"
+                      rel="external"
+                      target="_blank"
+                      >Ajax</a
+                    >; when you hover over,
+                    <a href="https://en.wikipedia.org/wiki/JavaScript"
+                      >JavaScript</a
+                    >
+                    detects this action and sends an
+                    <a
+                      href="https://en.wikipedia.org/wiki/Hyperlink"
+                      title="jump to HTTP in Wikipeida"
+                      >HTTP</a
+                    >
+                    request to Wikipedia's servers for more content, which is
+                    then rendered in the appropriate place by the browser. By
+                    clicking directly on the marked terms, you can easily
+                    navigate to another related entry.
+                  </p>
+
+                  <img
+                    class="col-md-4 object-fit-scale"
+                    src="https:////upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Hyperlink-Wikipedia.svg/250px-Hyperlink-Wikipedia.svg.png"
+                  />
+                </div>
+                <hr />
+
+                <h3>Detailed Use of Hyperlinks in Web Development</h3>
+
+                <h4>The Anchor Elements</h4>
+
+                <p>
+                  <a
+                    href="https://static.semrush.com/blog/uploads/media/59/fc/59fc528eecc00e43b1a3ed5d9b9933ee/original.png"
+                    ><img
+                      alt="anchor tag in HTML"
+                      class="w-100"
+                      data-original="https://static.semrush.com/blog/uploads/media/59/fc/59fc528eecc00e43b1a3ed5d9b9933ee/original.png"
+                      loading="lazy"
+                      src="https://static.semrush.com/blog/uploads/media/59/fc/59fc528eecc00e43b1a3ed5d9b9933ee/original.png"
+                  /></a>
+                </p>
+                <h5>Linking to relative URLs</h5>
+
+                <p>
+                  The most common way to create a hyperlink is using the HTML
+                  anchor tag <code>&lt;a&gt;</code>. The element starts with
+                  "&lt;a,” ends with “&gt;/a&gt;.” And contains various
+                  attributes that make up the full tag. This tag includes
+                  several key attributes:
+                </p>
+                <ul>
+                  <li>
+                    <code>href</code>: Specifies the URL of the page to which
+                    the link goes, which is the core feature of an anchor tag.
+                    The URL can be an absolute URL or a relative URL.
+
+                    <pre
+                      class="rounded-3 p-4 mt-2"
+                    ><code>&lt;a href="./cats/cutecat.jpg"&gt;Google&lt;/a&gt;
+&lt;a href="/en-US/docs/Web/HTML"&gt;Wikipedia&lt;/a&gt;</code></pre>
+                  </li>
+                  <li>
+                    <code>title</code>: Offers additional information about the
+                    link when the user hovers over it. (<a
+                      href="#"
+                      title="Thank you mate!"
+                      >try to hover this~</a
+                    >)
+                  </li>
+                  <li>
+                    <code>target</code>: Decides whether the linked document
+                    opens in a new window or the current one. For example: This
+                    tag creates a link that, when clicked, opens "<a
+                      target="_new"
+                      href="http://www.example.com"
+                      title="Who on the earth creates a website for example?!"
+                      >www.example.com</a
+                    >" in a new tab, allowing the user to keep the original page
+                    open.
+                  </li>
+                </ul>
+                <p>
+                  As I have shown at the beginning, I just wrap the "Google" and
+                  the Wikipedia in anchor tags like this:
+                </p>
+                <pre
+                  class="rounded-3 p-4"
+                ><code>&lt;a href="https://www.google.com" title="jump to Google" target="_blank"&gt;Google&lt;/a&gt;
+&lt;a href="https://en.wikipedia.org/" title="jump to Wikipedia" target="_blank"&gt;Wikipedia&lt;/a&gt;
+</code></pre>
+
+                <h5>Linking to an element on the same page (Anchor Tag)</h5>
+                <p>
+                  All of the above are standard uses of the 'a' tag, which
+                  directs to external pages, allowing us to navigate between web
+                  pages. Another very common use of the 'a' tag is for in-page
+                  title navigation. We simply need to include the '#' symbol in
+                  the href attribute, followed immediately by the id value of
+                  another element, to easily achieve in-page title navigation.
+                </p>
+                <p>
+                  This type of <code>a</code> elements are also called "Anchor
+                  Tag"
+                </p>
+                <p>
+                  The anchor tag is essentially a tag that you can attach to a
+                  word or a phrase (exactly like you would a normal internal or
+                  external link), except it brings readers down to a different
+                  section of the page as opposed to another webpage. You're
+                  essentially creating a unique URL within the same page when
+                  you use this tag.
+                </p>
+
+                <pre
+                  class="rounded-3 p-4"
+                ><code>&lt;!-- &lt;a&gt; element links to the section below --&gt;
+&lt;p&gt;&lt;a href="#Section_further_down"&gt;Jump to the heading below&lt;/a&gt;&lt;/p&gt;
+&lt;!-- Heading to link to --&gt;
+&lt;h2 id="Section_further_down"&gt;Section further down&lt;/h2&gt;</code></pre>
+                <p>
+                  There are really three main benefits when it comes to using
+                  the anchor tag:
+                </p>
+                <ol>
+                  <li>
+                    <b>No Scrolling</b>. The biggest benefit to the anchor tag
+                    is not forcing your visitors to scroll down tons of
+                    information to find a particular section. This can get
+                    daunting, and depending on just how much content is on the
+                    page, it can be very difficult to find a certain section
+                    amidst all the content.
+                  </li>
+                  <li>
+                    <b>Organization</b>. This helps webmasters keep things in
+                    order. Instead of having to create several different
+                    webpages or splitting up a document, you can keep it all in
+                    one place.
+                  </li>
+                  <li>
+                    <b>Search Engine Use</b>. Google sometimes uses this tag to
+                    help send a user to a specific section of your webpage,
+                    which helps make things easier for users.
+                  </li>
+                </ol>
+
+                <h4>Linking Images</h4>
+                <p>
+                  Hyperlinks can also be used to make images clickable, using
+                  the <code>&lt;a&gt;</code> tag wrapped around an
+                  <code>&lt;img&gt;</code> tag:
+                </p>
+
+                <p>
+                  Here, clicking the image sends the user to the specified URL.
+                  This is particularly useful in web design for logos and
+                  navigational graphics.
+                </p>
+                <div
+                  id="cat-double"
+                  class="pt-2 align-items-center justify-content-center container d-flex flex-column flex-md-row"
+                >
+                  <div id="cats-carousel" class="col carousel slide">
+                    <div class="carousel-indicators">
+                      <button
+                        type="button"
+                        data-bs-target="#cats-carousel"
+                        data-bs-slide-to="0"
+                        class="active"
+                        aria-current="true"
+                        aria-label="Slide 1"
+                      ></button>
+                      <button
+                        type="button"
+                        data-bs-target="#cats-carousel"
+                        data-bs-slide-to="1"
+                        aria-label="Slide 2"
+                      ></button>
+                      <button
+                        type="button"
+                        data-bs-target="#cats-carousel"
+                        data-bs-slide-to="2"
+                        aria-label="Slide 3"
+                      ></button>
+                    </div>
+                    <div
+                      id="cats-container"
+                      class="carousel-inner rounded-4"
+                    ></div>
+                    <button
+                      class="carousel-control-prev"
+                      type="button"
+                      data-bs-target="#cats-carousel"
+                      data-bs-slide="prev"
+                    >
+                      <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                      class="carousel-control-next"
+                      type="button"
+                      data-bs-target="#cats-carousel"
+                      data-bs-slide="next"
+                    >
+                      <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                  <div
+                    id="right-vertical-contents"
+                    class="col container row justify-content-center"
+                  >
+                    <div id="cats-vertical" class="vstack gap-2"></div>
+                    <p class="mt-0 text-center">
+                      This is an
+                      <i class="text-bg-success p-1 rounded-2">infinite</i>
+                      cats-scroll! Try it!
+                    </p>
+                  </div>
+                </div>
+                <div class="container pb-2">
+                  <div class="d-grid ms-auto me-auto me-md-4 gap-2 mt-1 mb-2">
+                    <button
+                      id="more-cats-btn"
+                      class="btn btn-primary"
+                      type="button"
+                    >
+                      More Cats! (lost current cats!)
+                    </button>
+                  </div>
+                </div>
+                <p>
+                  Above is an example for a <code>img</code> element wraped by a
+                  <code>a</code> element,you can just click the image and then
+                  you will jump to the source of the cat image
+                </p>
+
+                <h4>Background Images</h4>
+                <p>
+                  CSS can be used to link background images which are not
+                  clickable but enhance the aesthetic of a webpage. The CSS
+                  property <code>background-image</code> is used to assign an
+                  image to the background of an element:
+                </p>
+
+                <p>
+                  The biggest feature of <code>background-image</code> is that
+                  they are interpreted by the browser as the background, so they
+                  cannot be "selected". Normal img tags, whether or not they are
+                  wrapped in an <code>a</code> element, can be selected by the
+                  cursor. However, if we do not want the image to be selectable,
+                  but instead want it to quietly serve as a background, it is
+                  best to use <code>background-image</code> in CSS
+                </p>
+                <p>
+                  It is quite easy to use <code>background-image</code> in CSS,
+                  all you need to do is just select the element you want to
+                  embed an image in by the CSS selector, and then put the URL of
+                  the image in the <code>url</code> function of
+                  <code>background-image</code> attribute. Like this:
+                  <code>
+                    element{background-image:url(https://picture.jpg)}</code
+                  >
+                </p>
+                <p
+                  id="show-bgi"
+                  class="fs-2 p-3 fw-bold text-white"
+                  style="
+                    background-image: linear-gradient(
+                        rgba(0, 0, 0, 0.5),
+                        rgba(0, 0, 0, 0.2)
+                      ),
+                      url(https://cdn2.thecatapi.com/images/2or.gif);
+                  "
+                >
+                  This is an example of background image of an element
+                </p>
+                <hr />
+                <h3>How Browsers Parse and Process Hyperlinks</h3>
+                <h4>URL Parsing</h4>
+                <p>
+                  When a hyperlink is clicked, or try to render the image with
+                  <code>href</code> the browser first parses the
+                  <code>href</code> attribute of the anchor tag to determine the
+                  destination URL and try to get the resources refered by the
+                  URL. It checks the validity of the URL and prepares to
+                  initiate a network request.
+                </p>
+                <h4>DNS Lookup</h4>
+                <p>
+                  The browser performs a
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work#dns_lookup"
+                    >DNS lookup</a
+                  >
+                  to convert the domain name into an IP address. This step is
+                  crucial as it tells the browser where to send its request.
+                  Typically, a DNS lookup is only needed once for each hostname
+                  during a webpage load. However, if a page includes resources
+                  like fonts, images, scripts, ads, and analytics from multiple
+                  hostnames, each unique hostname requires its own DNS lookup.
+                  <img
+                    class="col-12 col-lg-5"
+                    style="float: right"
+                    src="https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work/ssl.jpg"
+                    alt="The DNS lookup, the TCP handshake, and 5 steps of the TLS handshake including clienthello, serverhello and certificate, clientkey and finished for both server and client."
+                  />
+                </p>
+
+                <h4>HTTP Request</h4>
+                <p>
+                  Once the browser knows the server's IP address, it sets up a
+                  connection using a
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Glossary/TCP_handshake"
+                    >TCP three-way handshake</a
+                  >, a process often called "SYN-SYN-ACK" because it involves
+                  three steps: SYN, SYN-ACK, and ACK. This ensures the browser
+                  and server can communicate securely, often over HTTPS. For
+                  secure connections, a TLS negotiation follows, determining the
+                  encryption methods before any data transfers. This includes
+                  multiple steps like clienthello, serverhello, and verifying
+                  certificates, taking several round trips, which adds time but
+                  secures the data being transmitted. After completing these
+                  steps, the browser finally sends the request for the webpage.
+                  It sends an HTTP GET request to the server associated with the
+                  IP address. The GET request specifies the path to the resource
+                  that needs to be fetched.
+                </p>
+                <h4>Server Response and Rendering</h4>
+                <p>
+                  The server receives the request, processes it, and sends back
+                  the requested page along with associated resources like
+                  images, scripts, and CSS files. The browser then renders the
+                  page for the user to view. This entire process, from click to
+                  display, typically happens within a few milliseconds, thanks
+                  to modern internet infrastructure.
+                </p>
+                <hr />
+                <h3>Using Hyperlinks for Improved User Experience</h3>
+                <p>
+                  Developers can enhance user experience by strategically using
+                  hyperlinks to guide users through a website, create engaging
+                  interactions, and facilitate easy navigation. For instance,
+                  navigation menus are often built with lists of hyperlinks, and
+                  call-to-action buttons are implemented using anchor tags
+                  styled with CSS to draw attention and encourage clicks.
+                </p>
+                <p>
+                  Moreover, AJAX (Asynchronous JavaScript and XML) can be used
+                  in conjunction with hyperlinks to load new content without a
+                  full page reload, keeping the user on the same page but
+                  updating parts of it dynamically. This is commonly seen in
+                  online forms, search results, and social media feeds. >
+                </p>
+                <hr />
+                <h3>Conclusion</h3>
+                <p>
+                  Hyperlinks are fundamental to the fabric of the web. They not
+                  only enable the vast interconnectedness of information but
+                  also enhance the efficiency and aesthetics of digital
+                  navigation. Understanding the technical aspects of hyperlink
+                  implementation and the processes involved in their execution
+                  provides developers with the tools to create more dynamic,
+                  user-friendly websites.
+                </p>
+                <p>
+                  With ongoing advancements in web technology and standards, the
+                  role and functionality of hyperlinks continue to evolve,
+                  offering new and innovative ways to access and interact with
+                  content online. As we look to the future, the potential for
+                  hyperlinks to integrate more deeply with emerging technologies
+                  suggests a continuing evolution of the internet's navigational
+                  capabilities.
+                </p>
+                <p>
+                  This comprehensive exploration of hyperlinks, from technical
+                  specifics to practical applications, underscores their
+                  critical role in web development and highlights the
+                  sophistication behind what appears to be a simple click.
+                </p>
               </div>
             </div>
           </div>
@@ -612,79 +861,6 @@
               </p>
             </div>
           </div>
-
-          <div
-            id="cat-double"
-            class="pt-2 align-items-center justify-content-center container d-flex flex-column flex-md-row border-top border-1"
-          >
-            <div id="cats-carousel" class="col carousel slide">
-              <div class="carousel-indicators">
-                <button
-                  type="button"
-                  data-bs-target="#cats-carousel"
-                  data-bs-slide-to="0"
-                  class="active"
-                  aria-current="true"
-                  aria-label="Slide 1"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#cats-carousel"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#cats-carousel"
-                  data-bs-slide-to="2"
-                  aria-label="Slide 3"
-                ></button>
-              </div>
-              <div id="cats-container" class="carousel-inner rounded-4"></div>
-              <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#cats-carousel"
-                data-bs-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#cats-carousel"
-                data-bs-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-            <div
-              id="right-vertical-contents"
-              class="col container row justify-content-center"
-            >
-              <div id="cats-vertical" class="vstack gap-2"></div>
-              <p class="mt-0 text-center">
-                This is an
-                <i class="text-bg-success p-1 rounded-2">infinite</i>
-                cats-scroll! Try it!
-              </p>
-            </div>
-          </div>
-          <div class="container pb-2 border-bottom border-1">
-            <div class="d-grid ms-auto me-auto me-md-4 gap-2 mt-1 mb-2">
-              <button id="more-cats-btn" class="btn btn-primary" type="button">
-                More Cats! (lost current cats!)
-              </button>
-            </div>
-          </div>
         </div>
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
           <div
@@ -695,7 +871,7 @@
             aria-atomic="true"
           >
             <div class="toast-header">
-              <strong class="me-auto">🐱 Meow ~</strong>
+              <span class="fw-bold me-auto">🐱 Meow ~</span>
               <small>🐈🐈🐈🐈🐈🐈</small>
               <button
                 type="button"
@@ -704,7 +880,9 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="toast-body">💗Your catshave been loaded up.💗</div>
+            <div id="toast-container" class="text-center fw-semibold toast-body">
+              💗Your cats have been loaded up.💗
+            </div>
           </div>
         </div>
       </section>

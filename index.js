@@ -11012,8 +11012,6 @@
   });
 })();
 
-
-
 const yunhoAvatarLink = "https://avatars.githubusercontent.com/u/75521446?v=4";
 
 $(document).ready(function () {
@@ -11029,7 +11027,14 @@ $(document).ready(function () {
   const toTitleIntro = $("#to-title-intro");
   const liveToastMeow = $("#liveToast");
   const navBarCloseBtn = $("#nav-close-button");
-  getCats();
+  const titleSectionSelector = $("#title-section-selector");
+  const navBarToggler = $("#navbar-toggler");
+
+  titleSectionSelector.on("click", () => {
+    navBarToggler.click();
+  });
+
+  getCats(catArrayURL);
 
   $(".navbar-brand").on("click", function () {
     $(window).scrollTop(-1);
@@ -11045,7 +11050,7 @@ $(document).ready(function () {
     catArrayURL.splice(0, catArrayURL.length);
     catLength.length = 0;
     catsContainer.addClass();
-    getCats();
+    getCats(catArrayURL);
   });
 
   $(window).on("scroll", function fun() {
@@ -11061,19 +11066,19 @@ $(document).ready(function () {
         catsVertical.get(0).clientHeight;
 
       if (isBottom < 600) {
-        getCats();
+        getCats(catArrayURL);
       }
     }, 800)
   );
 
-  function getCats() {
+  function getCats(catArrayURL) {
     console.log("sending GET request...");
     $.get(
       "https://api.thecatapi.com/v1/images/search?limit=10",
       function (data, status, xhr) {
         titleIntro.removeClass("placeholder");
         fakeLoading.empty();
-        console.log("Meow ~ ");
+        console.log("🐱:Meow~");
         console.log(status);
         console.log("status code:", xhr.status);
         renderAjaxData(catArrayURL, catsContainer, data);
@@ -11098,11 +11103,12 @@ function throttle(func, delay) {
   };
 }
 
-function elementTriggerAt(jqel,position,recall){
+function elementTriggerAt(jqel, position, recall) {
   let targetOffsetTop = jqel.offset().top;
   let scrollDistance = $(window).scrollTop() + position;
-  if (scrollDistance >= targetOffsetTop){recall()}
-
+  if (scrollDistance >= targetOffsetTop) {
+    recall();
+  }
 }
 
 function scrollCatsHandler(catsVertical, handler) {
@@ -11151,7 +11157,9 @@ function renderAjaxData(catArrayURL, catsContainer, data) {
 }
 
 function renderSrollCats(catLength, catArrayURL, catsVertical) {
+  console.log(catLength.length);
   for (let i = catLength.length; i < catArrayURL.length; i++) {
+    if (i < 3) continue;
     catsVertical.append(
       $("<a>")
         .attr({ href: catArrayURL[i].url, target: "_blank" })
@@ -11173,5 +11181,7 @@ function renderSrollCats(catLength, catArrayURL, catsVertical) {
 function toggleCatMeow() {
   const toastLiveExample = document.getElementById("liveToast");
   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+
   toastBootstrap.show();
+  
 }
