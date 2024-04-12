@@ -11012,50 +11012,14 @@
   });
 })();
 
-function throttle(func, delay) {
-  let timeout = null;
-  return function () {
-    if (!timeout) {
-      timeout = setTimeout(function () {
-        func.apply(this, arguments);
-        timeout = null;
-      }, delay);
-    }
-  };
-}
 
-function renderSrollCats(catLength,catArrayURL,catsVertical) {
-  for (let i = catLength.length; i < catArrayURL.length; i++) {
-    catsVertical.append(
-      $("<a>")
-        .attr({ href: catArrayURL[i].url, target: "_blank" })
-        .append(
-          // Append an anchor tag
-          $("<img>")
-            .attr({
-              // Append an image tag
-              src: catArrayURL[i].url,
-              alt: "a cat or cats",
-            })
-            .addClass("rounded-5 object-fit-cover border border-1 p-1") // Add classes to the image
-        )
-    );
-  }
-  catLength.length = catArrayURL.length;
-}
-
-function toggleCatMeow() {
-  const toastLiveExample = document.getElementById("liveToast");
-  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-  toastBootstrap.show();
-}
 
 const yunhoAvatarLink = "https://avatars.githubusercontent.com/u/75521446?v=4";
 
 $(document).ready(function () {
   const catArrayURL = [];
 
-  const catLength ={length:catArrayURL.length} ;
+  const catLength = { length: catArrayURL.length };
 
   const titleIntro = $("#title-intro");
   const catsContainer = $("#cats-container");
@@ -11084,7 +11048,9 @@ $(document).ready(function () {
     getCats();
   });
 
-  $(window).on("scroll", scrollCatsHandler);
+  $(window).on("scroll", function fun() {
+    scrollCatsHandler(catsVertical, fun);
+  });
 
   catsVertical.on(
     "scroll",
@@ -11110,55 +11076,102 @@ $(document).ready(function () {
         console.log("Meow ~ ");
         console.log(status);
         console.log("status code:", xhr.status);
+        renderAjaxData(catArrayURL, catsContainer, data);
 
-        $.each(data, function (index, value) {
-          catArrayURL.push({ url: value.url, id: value.id });
-          if (catsContainer.children().length > 2) {
-            return;
-          }
-          const catImg = $("<img>")
-            .attr({
-              id: value.id,
-              src: value.url,
-              alt: "a cat or cats",
-            })
-            .addClass("object-fit-cover");
-          const hyperCat = $("<a>")
-            .attr({
-              href: value.url,
-              target: "_blank",
-            })
-            .append(catImg);
-          const catTemplate = $("<div>")
-            .addClass("carousel-item")
-            .append(hyperCat);
-          catsContainer.append(catTemplate);
-          $("#" + value.id).attr("src", catArrayURL[index].url);
-          catsContainer.children().eq(0).addClass("active");
-        });
-        renderSrollCats(catLength, catArrayURL,catsVertical);
+        renderSrollCats(catLength, catArrayURL, catsVertical);
         $("span").removeClass("placeholder");
         toggleCatMeow();
       }
     );
   }
-
-  function scrollCatsHandler() {
-    // scroll the vertical cats container a little bit
-
-    // Get the distance from the target element to the top of the document.
-    let targetOffsetTop = catsVertical.offset().top;
-    // Calculate the distance between the scroll position and the top of the target element.
-    let scrollDistance = $(window).scrollTop() + 500;
-
-    if (scrollDistance >= targetOffsetTop) {
-      catsVertical
-        .delay(100)
-        .animate({ scrollTop: 500 }, 1000)
-        .animate({ scrollTop: 0 }, 500)
-        .animate({ scrollTop: 160 }, 250);
-      // $("#cats-vertical").scrollTop(20);
-      $(window).off("scroll", scrollCatsHandler);
-    }
-  }
 });
+
+function throttle(func, delay) {
+  let timeout = null;
+  return function () {
+    if (!timeout) {
+      timeout = setTimeout(function () {
+        func.apply(this, arguments);
+        timeout = null;
+      }, delay);
+    }
+  };
+}
+
+function elementTriggerAt(jqel,position,recall){
+  let targetOffsetTop = jqel.offset().top;
+  let scrollDistance = $(window).scrollTop() + position;
+  if (scrollDistance >= targetOffsetTop){recall()}
+
+}
+
+function scrollCatsHandler(catsVertical, handler) {
+  // scroll the vertical cats container a little bit
+
+  // Get the distance from the target element to the top of the document.
+  let targetOffsetTop = catsVertical.offset().top;
+  // Calculate the distance between the scroll position and the top of the target element.
+  let scrollDistance = $(window).scrollTop() + 500;
+
+  if (scrollDistance >= targetOffsetTop) {
+    catsVertical
+      .delay(100)
+      .animate({ scrollTop: 500 }, 1000)
+      .animate({ scrollTop: 0 }, 500)
+      .animate({ scrollTop: 160 }, 250);
+    // $("#cats-vertical").scrollTop(20);
+    $(window).off("scroll", handler);
+  }
+}
+
+function renderAjaxData(catArrayURL, catsContainer, data) {
+  $.each(data, function (index, value) {
+    catArrayURL.push({ url: value.url, id: value.id });
+    if (catsContainer.children().length > 2) {
+      return;
+    }
+    const catImg = $("<img>")
+      .attr({
+        id: value.id,
+        src: value.url,
+        alt: "a cat or cats",
+      })
+      .addClass("object-fit-cover");
+    const hyperCat = $("<a>")
+      .attr({
+        href: value.url,
+        target: "_blank",
+      })
+      .append(catImg);
+    const catTemplate = $("<div>").addClass("carousel-item").append(hyperCat);
+    catsContainer.append(catTemplate);
+    $("#" + value.id).attr("src", catArrayURL[index].url);
+    catsContainer.children().eq(0).addClass("active");
+  });
+}
+
+function renderSrollCats(catLength, catArrayURL, catsVertical) {
+  for (let i = catLength.length; i < catArrayURL.length; i++) {
+    catsVertical.append(
+      $("<a>")
+        .attr({ href: catArrayURL[i].url, target: "_blank" })
+        .append(
+          // Append an anchor tag
+          $("<img>")
+            .attr({
+              // Append an image tag
+              src: catArrayURL[i].url,
+              alt: "a cat or cats",
+            })
+            .addClass("rounded-5 object-fit-cover border border-1 p-1") // Add classes to the image
+        )
+    );
+  }
+  catLength.length = catArrayURL.length;
+}
+
+function toggleCatMeow() {
+  const toastLiveExample = document.getElementById("liveToast");
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+  toastBootstrap.show();
+}
