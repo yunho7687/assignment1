@@ -11029,19 +11029,97 @@ $(document).ready(function () {
   const navBarCloseBtn = $("#nav-close-button");
   const titleSectionSelector = $("#title-section-selector");
   const navBarToggler = $("#navbar-toggler");
+  const sectionOne = $("#section-1");
+  const sectionTwo = $("#section-2");
+  const sectionCV = $("#section-cv");
+  const toSectionOne = $(".section-1");
+  const toSectionTwo = $(".section-2");
+  const toCV = $(".section-cv");
+  const sideMenu = $("#side-menu");
+  const navItemTemplate = $("#nav-item-template").html();
+
+
+  function renderMenu() {
+    sideMenu.empty()
+    const titles = $("section.active .title");
+    titles.each(function () {
+      // console.log(navItemTemplate);
+      const temp = $(navItemTemplate);
+      let url = "#" + $(this).attr("id");
+      let text = $(this).find("a").text();
+      temp.find("a").attr({ href: url });
+      temp.find("a").text(text);
+      if ($(this).prop("tagName") === "H3") {
+        temp.addClass("ms-2");
+      } else if ($(this).prop("tagName") === "H4") {
+        temp.addClass("ms-3");
+      } else if ($(this).prop("tagName") === "H5") {
+        temp.addClass("ms-5");
+      }
+      sideMenu.append(temp);
+    });
+  }
+
+  sideMenu.on("click", function () {
+    navBarCloseBtn.click();
+  });
 
   titleSectionSelector.on("click", () => {
     navBarToggler.click();
   });
 
+  navBarToggler.on("click", function () {
+    $("a.nav-link.dropdown-toggle").addClass("show")
+    $("a.nav-link.dropdown-toggle").parent().find(".dropdown-menu").addClass("show")
+ 
+    renderMenu();
+  });
+
   getCats(catArrayURL);
 
-  $(".navbar-brand").on("click", function () {
+  $("#to-top").on("click", function () {
     $(window).scrollTop(-1);
   });
 
-  toTitleIntro.on("click", function () {
-    navBarCloseBtn.click();
+  toSectionOne.each(function () {
+    $(this).on("click", function (e) {
+      e.preventDefault();
+      sectionTwo.fadeOut()
+      sectionCV.fadeOut()
+      sectionOne.fadeIn()
+      sectionOne.addClass("active");
+      sectionTwo.removeClass("active");
+      sectionCV.removeClass("active");
+      titleSectionSelector.find("span").text("Section 1")
+      renderMenu()
+    });
+  });
+  toSectionTwo.each(function () {
+    $(this).on("click", function (e) {
+      e.preventDefault(e);
+      sectionCV.fadeOut()
+      sectionOne.fadeOut()
+      sectionTwo.fadeIn()
+
+      sectionOne.removeClass("active");
+      sectionTwo.addClass("active");
+      sectionCV.removeClass("active");
+      renderMenu()
+      titleSectionSelector.find("span").text("Section 2")
+    });
+  });
+  toCV.each(function () {
+    $(this).on("click", function (e) {
+      e.preventDefault(e);
+      sectionOne.fadeOut()
+      sectionTwo.fadeOut()
+      sectionCV.fadeIn()
+      sectionOne.removeClass("active");
+      sectionTwo.removeClass("active");
+      sectionCV.addClass("active");
+      renderMenu()
+      titleSectionSelector.find("span").text("Curriculum Citae")
+    });
   });
 
   moreCatsButton.on("click", function () {
@@ -11070,21 +11148,21 @@ $(document).ready(function () {
       }
     }, 800)
   );
+  sectionOne.fadeIn().delay(500).fadeOut().delay(1700+100).fadeIn()
+  sectionTwo.fadeOut().delay(500+500).fadeIn().fadeOut()
+  sectionCV.fadeOut().delay(1300 +500).fadeIn().fadeOut()
 
   function getCats(catArrayURL) {
     console.log("sending GET request...");
     $.get(
       "https://api.thecatapi.com/v1/images/search?limit=10",
       function (data, status, xhr) {
-        titleIntro.removeClass("placeholder");
         fakeLoading.empty();
         console.log("🐱:Meow~");
         console.log(status);
         console.log("status code:", xhr.status);
         renderAjaxData(catArrayURL, catsContainer, data);
-
         renderSrollCats(catLength, catArrayURL, catsVertical);
-        $("span").removeClass("placeholder");
         toggleCatMeow();
       }
     );
@@ -11157,7 +11235,6 @@ function renderAjaxData(catArrayURL, catsContainer, data) {
 }
 
 function renderSrollCats(catLength, catArrayURL, catsVertical) {
-  console.log(catLength.length);
   for (let i = catLength.length; i < catArrayURL.length; i++) {
     if (i < 3) continue;
     catsVertical.append(
@@ -11181,7 +11258,5 @@ function renderSrollCats(catLength, catArrayURL, catsVertical) {
 function toggleCatMeow() {
   const toastLiveExample = document.getElementById("liveToast");
   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-
   toastBootstrap.show();
-  
 }

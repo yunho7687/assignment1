@@ -66,7 +66,6 @@
         }
         function attachEvent() {
           var old = typeof window.onclick === "function" && window.onclick;
-          console.log(typeof window.onclick === "function");
           window.onclick = function (event) {
             old && old();
             createHeart(event);
@@ -109,17 +108,37 @@
       })(window, document);
     </script>
   </head>
-  <body class="fw-light">
+
+  <body class="d-flex flex-column fw-light">
+    <button
+      id="to-top"
+      type="button"
+      class="fs-1 d-flex align-items-center justify-content-center fixed-btn btn btn-primary"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="currentColor"
+        class="bi bi-arrow-up-short"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"
+        />
+      </svg>
+    </button>
+
     <header>
       <nav id="nav" class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
-          <div class="d-flex flex-grow-1 justify-content-betwee">
-            <a
-              id="title-section-selector"
-              class="navbar-brand flex-grow-1"
-              href="#"
-              >Select Sections
-            </a>
+          <div
+            class="d-flex flex-grow-1 justify-content-betwee align-items-center"
+          >
+            <div id="title-section-selector" class="navbar-brand flex-grow-1">
+              <span class="btn btn-primary"> Select Sections </span>
+            </div>
             <div class="pe-3 nav-item dropdown">
               <button
                 class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
@@ -269,63 +288,47 @@
                     Section Selection
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Section 1</a></li>
                     <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Section 2</a>
+                      <a class="section-1 dropdown-item" href="#">Section 1</a>
                     </li>
                     <li>
                       <hr class="dropdown-divider" />
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">Portofolio</a>
+                      <a class="dropdown-item section-2" href="#">Section 2</a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                      <a class="section-cv dropdown-item" href="#"
+                        >Curriculum Vitae</a
+                      >
                     </li>
                   </ul>
                 </li>
-                <li id="to-title-intro" class="nav-item">
-                  <a
-                    class="nav-link active head-1"
-                    aria-current="page"
-                    href="#title-intro"
-                    >Introduction to Hyperlinks</a
-                  >
-                </li>
-                <li id="to-title-int" class="nav-item head-2">
-                  <a class="nav-link" aria-current="page" href="#title-intro"
-                    >Introducti</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
               </ul>
-              <form class="d-flex mt-3" role="search">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
+              <ul
+                id="side-menu"
+                class="navbar-nav justify-content-end flex-grow-1 pe-3"
+              >
+                <template id="nav-item-template">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                  </li>
+                </template>
+              </ul>
             </div>
           </div>
         </div>
       </nav>
     </header>
-    <main>
-      <section id="section-1" class="container section active">
+    <main class="flex-grow-1">
+      <section id="section-1" class="container section active mt-3">
         <div id="section-1-main" class="container">
-          <hr />
-          <div id="section-intro" class="container mt-2">
-            <h1 class="placeholder-glow">
-              <span id="title-intro" class="placeholder col-12"
-                >Introduction to Hyperlinks</span
-              >
+          <div id="section-intro" class="container">
+            <h1 id="title-intro" class="title placeholder-glow">
+              <a href="#title-intro">Introduction to Hyperlinks</a>
             </h1>
             <div>
               <div>
@@ -430,13 +433,16 @@
                       target="_blank"
                       >Ajax</a
                     >; when you hover over,
-                    <a href="https://en.wikipedia.org/wiki/JavaScript"
+                    <a
+                      href="https://en.wikipedia.org/wiki/JavaScript"
+                      target="_blank"
                       >JavaScript</a
                     >
                     detects this action and sends an
                     <a
                       href="https://en.wikipedia.org/wiki/Hyperlink"
                       title="jump to HTTP in Wikipeida"
+                      target="_blank"
                       >HTTP</a
                     >
                     request to Wikipedia's servers for more content, which is
@@ -447,14 +453,20 @@
 
                   <img
                     class="col-md-4 object-fit-scale"
-                    src="https:////upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Hyperlink-Wikipedia.svg/250px-Hyperlink-Wikipedia.svg.png"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Hyperlink-Wikipedia.svg/250px-Hyperlink-Wikipedia.svg.png"
                   />
                 </div>
                 <hr />
 
-                <h3>Detailed Use of Hyperlinks in Web Development</h3>
+                <h3 id="detailed-use" class="title">
+                  <a href="#detailed-use"
+                    >Detailed Use of Hyperlinks in Web Development</a
+                  >
+                </h3>
 
-                <h4>The Anchor Elements</h4>
+                <h4 id="anchor-elements" class="title">
+                  <a href="#anchor-elements">The Anchor Elements</a>
+                </h4>
 
                 <p>
                   <a
@@ -467,7 +479,9 @@
                       src="https://static.semrush.com/blog/uploads/media/59/fc/59fc528eecc00e43b1a3ed5d9b9933ee/original.png"
                   /></a>
                 </p>
-                <h5>Linking to relative URLs</h5>
+                <h5 id="linking-to" class="title">
+                  <a href="#linking-to">Linking to relative URLs</a>
+                </h5>
 
                 <p>
                   The most common way to create a hyperlink is using the HTML
@@ -517,7 +531,11 @@
 &lt;a href="https://en.wikipedia.org/" title="jump to Wikipedia" target="_blank"&gt;Wikipedia&lt;/a&gt;
 </code></pre>
 
-                <h5>Linking to an element on the same page (Anchor Tag)</h5>
+                <h5 id="linking-to-an" class="title">
+                  <a href="#linking-to-an"
+                    >Linking to an element on the same page (Anchor Tag)</a
+                  >
+                </h5>
                 <p>
                   All of the above are standard uses of the 'a' tag, which
                   directs to external pages, allowing us to navigate between web
@@ -571,7 +589,9 @@
                   </li>
                 </ol>
 
-                <h4>Linking Images</h4>
+                <h4 id="linking-images" class="title">
+                  <a href="#linking-images">Linking Images</a>
+                </h4>
                 <p>
                   Hyperlinks can also be used to make images clickable, using
                   the <code>&lt;a&gt;</code> tag wrapped around an
@@ -668,7 +688,9 @@
                   you will jump to the source of the cat image
                 </p>
 
-                <h4>Background Images</h4>
+                <h4 id="background-images" class="title">
+                  <a href="#background-images">Background Images</a>
+                </h4>
                 <p>
                   CSS can be used to link background images which are not
                   clickable but enhance the aesthetic of a webpage. The CSS
@@ -695,22 +717,19 @@
                     element{background-image:url(https://picture.jpg)}</code
                   >
                 </p>
-                <p
-                  id="show-bgi"
-                  class="fs-2 p-3 fw-bold text-white"
-                  style="
-                    background-image: linear-gradient(
-                        rgba(0, 0, 0, 0.5),
-                        rgba(0, 0, 0, 0.2)
-                      ),
-                      url(https://cdn2.thecatapi.com/images/2or.gif);
-                  "
-                >
+                <p id="show-bgi" class="fs-2 p-3 fw-bold text-white">
                   This is an example of background image of an element
                 </p>
                 <hr />
-                <h3>How Browsers Parse and Process Hyperlinks</h3>
-                <h4>URL Parsing</h4>
+
+                <h3 id="how-browsers" class="title">
+                  <a href="#how-browsers"
+                    >How Browsers Parse and Process Hyperlinks</a
+                  >
+                </h3>
+                <h4 id="url-parsing" class="title">
+                  <a href="#url-parsing">URL Parsing</a>
+                </h4>
                 <p>
                   When a hyperlink is clicked, or try to render the image with
                   <code>href</code> the browser first parses the
@@ -719,7 +738,9 @@
                   URL. It checks the validity of the URL and prepares to
                   initiate a network request.
                 </p>
-                <h4>DNS Lookup</h4>
+                <h4 id="dns-lookup" class="title">
+                  <a href="#dns-lookup">DNS Lookup</a>
+                </h4>
                 <p>
                   The browser performs a
                   <a
@@ -733,14 +754,16 @@
                   like fonts, images, scripts, ads, and analytics from multiple
                   hostnames, each unique hostname requires its own DNS lookup.
                   <img
-                    class="col-12 col-lg-5"
-                    style="float: right"
+                    class=" col-12 col-lg-5"
+                    style="float: right;padding:1rem 2rem"
                     src="https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work/ssl.jpg"
                     alt="The DNS lookup, the TCP handshake, and 5 steps of the TLS handshake including clienthello, serverhello and certificate, clientkey and finished for both server and client."
                   />
                 </p>
 
-                <h4>HTTP Request</h4>
+                <h4 id="http-request" class="title">
+                  <a href="#http-request">HTTP Request</a>
+                </h4>
                 <p>
                   Once the browser knows the server's IP address, it sets up a
                   connection using a
@@ -748,19 +771,27 @@
                     href="https://developer.mozilla.org/en-US/docs/Glossary/TCP_handshake"
                     >TCP three-way handshake</a
                   >, a process often called "SYN-SYN-ACK" because it involves
-                  three steps: SYN, SYN-ACK, and ACK. This ensures the browser
-                  and server can communicate securely, often over HTTPS. For
-                  secure connections, a TLS negotiation follows, determining the
-                  encryption methods before any data transfers. This includes
-                  multiple steps like clienthello, serverhello, and verifying
-                  certificates, taking several round trips, which adds time but
-                  secures the data being transmitted. After completing these
-                  steps, the browser finally sends the request for the webpage.
-                  It sends an HTTP GET request to the server associated with the
-                  IP address. The GET request specifies the path to the resource
-                  that needs to be fetched.
+                  three steps: SYN, SYN-ACK, and ACK, and ACK for
+                  <span class="fw-semibold">SYN</span>chronize,
+                  <span class="fw-semibold">SYN</span>chronize-<span
+                    class="fw-semibold"
+                    >ACK</span
+                  >nowledgement, and
+                  <span class="fw-semibold">ACK</span>nowledge respectively.
+                  This ensures the browser and server can communicate securely,
+                  often over HTTPS. For secure connections, a TLS negotiation
+                  follows, determining the encryption methods before any data
+                  transfers. This includes multiple steps like clienthello,
+                  serverhello, and verifying certificates, taking several round
+                  trips, which adds time but secures the data being transmitted.
+                  After completing these steps, the browser finally sends the
+                  request for the webpage. It sends an HTTP GET request to the
+                  server associated with the IP address. The GET request
+                  specifies the path to the resource that needs to be fetched.
                 </p>
-                <h4>Server Response and Rendering</h4>
+                <h4 id="server-response" class="title">
+                  <a href="#server-response">Server Response and Rendering</a>
+                </h4>
                 <p>
                   The server receives the request, processes it, and sends back
                   the requested page along with associated resources like
@@ -770,7 +801,11 @@
                   to modern internet infrastructure.
                 </p>
                 <hr />
-                <h3>Using Hyperlinks for Improved User Experience</h3>
+                <h3 id="using-hyperlinks" class="title">
+                  <a href="#using-hyperlinks"
+                    >Using Hyperlinks for Improved User Experience</a
+                  >
+                </h3>
                 <p>
                   Developers can enhance user experience by strategically using
                   hyperlinks to guide users through a website, create engaging
@@ -784,10 +819,12 @@
                   in conjunction with hyperlinks to load new content without a
                   full page reload, keeping the user on the same page but
                   updating parts of it dynamically. This is commonly seen in
-                  online forms, search results, and social media feeds. >
+                  online forms, search results, and social media feeds.
                 </p>
                 <hr />
-                <h3>Conclusion</h3>
+                <h3 id="conclusion" class="title">
+                  <a href="#conclusion">Conclusion</a>
+                </h3>
                 <p>
                   Hyperlinks are fundamental to the fabric of the web. They not
                   only enable the vast interconnectedness of information but
@@ -815,52 +852,6 @@
               </div>
             </div>
           </div>
-          <div class="container mt-2">
-            <h1 class="placeholder-glow">
-              <span class="placeholder col-12"></span>
-            </h1>
-            <div id="fake-loading-2">
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-            </div>
-          </div>
         </div>
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
           <div
@@ -880,104 +871,85 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div id="toast-container" class="text-center fw-semibold toast-body">
+            <div
+              id="toast-container"
+              class="text-center fw-semibold toast-body"
+            >
               💗Your cats have been loaded up.💗
             </div>
           </div>
         </div>
       </section>
-      <section id="section-2" class="container section">
-        <div>
-          <div id="section-intro" class="container mt-2">
-            <h1 class="placeholder-glow">
-              <span id="title-i" class="col-12">Sec2</span>
-            </h1>
-            <div>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-            </div>
-            <div>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-              <p class="placeholder-glow">
-                <span class="placeholder col-12"></span>
-              </p>
-
-              <p class="placeholder-wave">
-                <span class="placeholder col-12"></span>
-              </p>
-            </div>
-          </div>
+      <section id="section-2" class="container section mt-3">
+        <div class="container">
+          <h1 id="history-of-a" class="title">
+            <a href="#history-of-a">History of Hyperlink</a>
+          </h1>
+        </div>
+      </section>
+      <section id="section-cv" class="container section mt-3">
+        <div class="container">
+          <h1 id="cv-title" class="title">
+            <a href="#history-of-a">Curriculum Vitae</a>
+          </h1>
         </div>
       </section>
     </main>
+    <footer class="py-3 my-4">
+      <ul
+        class="nav flex-column flex-sm-row text-center justify-content-center border-bottom pb-3 mb-3"
+      >
+        <li class="nav-item">
+          <a href="#" class="section-1 nav-link px-2 text-body-secondary"
+            >Section 1</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="#" class="section-2 nav-link px-2 text-body-secondary"
+            >Section 2</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="#" class="section-cv nav-link px-2 text-body-secondary"
+            >Curriculum Vitae</a
+          >
+        </li>
+      </ul>
+      <p class="d-block text-center text-body-secondary">
+        by Yunho Ding (24094053)
+      </p>
+      <p class="d-block text-center text-body-secondary">
+        <a
+          href="https://github.com/yunho7687"
+          target="_blank"
+          class="mx-auto text-body-secondary"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-github"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+            /></svg
+        ></a>
+        <a href="https://www.linkedin.com/in/yunho-ding-87b322281/"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-linkedin"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"
+            /></svg
+        ></a>
+      </p>
+    </footer>
 
     <script
       defer
@@ -987,17 +959,5 @@
     ></script>
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
     <script src="./index.js"></script>
-    <!-- <script>
-        $(document).ready(function(){
-            $("button").click(function(){
-              $("#div1").load("d.txt");
-            });
-            res2 = $.get("https://api.github.com/users",function(data){
-                //console.log(data)
-            },"json")
-         
-          });
-
-    </script> -->
   </body>
 </html>

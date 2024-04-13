@@ -1,23 +1,27 @@
-body{
-min-height: 100vh;
-}
-::selection {
-  color: white;
-  background-color: #858585;
-}
-
 html {
-
-  scroll-padding-top:58px;
+  scroll-padding-top: 70px;
 }
-body{
-  transition: background-color 0.3s ease-out,height 0.3s ease-out;
-
+[data-bs-theme="dark"] a {
+  --bs-body-color: #dee2e6;
+  --bs-highlight-color: #dee2e6;
+  color: var(--bs-body-color);
+  text-decoration: none;
 }
+[data-bs-theme="dark"] a:hover {
+  --bs-highlight-color: #dee2e6;
+  color: var(--bs-highlight-color);
+  text-decoration: underline;
+}
+
+body {
+  min-height: 100vh;
+  transition: background-color 0.3s ease-out, height 0.3s ease-out;
+}
+
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #6610f2;
-  --bs-btn-border-color: #6610f2;
+  --bs-btn-bg: #712cf9;
+  --bs-btn-border-color: #6528e0;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #8440f2;
   --bs-btn-hover-border-color: #7035cf;
@@ -28,45 +32,64 @@ body{
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: #997fc2;
-  --bs-btn-disabled-border-color: #0d6efd;
+  --bs-btn-disabled-border-color: #a69db6;
 }
 
+.fixed-btn {
+  height: 2.2rem;
+  width: 2.2rem;
+  position: fixed;
+  bottom: 0rem;
+  right: 0;
+  margin: 2rem;
+  padding: 3px;
+}
+.fixed-btn svg {
+  width: 40px;
+  height: 40px;
+  font-size: 40px; /* 调整 SVG 图标的大小 */
+}
 
-header{
+header {
   height: 58px;
-
 }
-h3{
+footer {
+  min-height: 10rem;
+}
+.bd-footer a {
+  color: var(--bs-body-color);
+  text-decoration: none;
+}
+h3 {
   margin-bottom: 1rem;
 }
-section.section{
-  display:none;
+section.section {
+  display: none;
 }
-section.section.active{
-  display:block
+section.section.active {
+  display: block;
 }
 
-.carousel-item img{
+.carousel-item img {
   height: 22rem;
   width: 100%;
 }
 
-#cats-container{
+#cats-container {
   height: inherit;
   /* width: 100%; */
 }
 
-#cats-carousel{
+#cats-carousel {
   width: 22rem;
   height: 100%;
 }
-#cats-vertical{
+#cats-vertical {
   height: 19rem;
   margin: 1rem 0;
   overflow: auto;
 }
-#cats-vertical img{
-
+#cats-vertical img {
   height: 19rem;
   /* margin-bottom: 1rem; */
   width: 100%;
@@ -78,55 +101,86 @@ section.section.active{
 #cats-vertical::-webkit-scrollbar-thumb {
   background: #1a131a;
 }
-#right-vertical-contents{
+#right-vertical-contents {
   width: 24rem;
-  
- /* max-width: 90%; */
+
+  /* max-width: 90%; */
 }
-#more-cats-btn{
+#more-cats-btn {
   min-width: 18rem;
 }
 
-nav{
-
-transition: all;
-
-
+nav {
+  transition: all;
 }
-#section-1-main{
+#section-1-main {
   /* margin-top: 58px; */
 }
-.nav-item.head-2{
+.nav-item.head-2 {
   margin-left: 2rem;
 }
-#section-2{
+#section-2 {
   /* margin-top: 58px; */
 }
 
 .d-flex.flex-md-row.flex-column {
-
 }
-div figure.col-md-4{
+div figure.col-md-4 {
   width: 18rem;
 }
-div figure.col-md-4 img{
-height: 18rem;
-/* width: 100%; */
-
+div figure.col-md-4 img {
+  height: 18rem;
+  /* width: 100%; */
 }
 
-pre{
-  color:rgb(21, 195, 21);
+pre {
+  color: rgb(21, 195, 21);
   background-color: #303030;
 }
-p#show-bgi{
+p#show-bgi {
   line-height: 1.7rem;
-  background-color: rgba(0, 0, 0, 0.7) !important;
+
   margin: 0 auto;
-  width: 100%;
-height: 45vw;
-background-size: cover;
-background-repeat: no-repeat;
+  width: 50vw;
+  height: 45vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+    url(https://cdn2.thecatapi.com/images/2or.gif);
+}
+
+[data-bs-theme="light"] .title a {
+  color: #212529;
+  text-decoration: none;
+}
+[data-bs-theme="light"] .title a:hover {
+  color: #444444;
+  text-decoration: underline;
+}
+
+.title a:hover::before{
+  content: "#";
+  display: inline-block;
+  font-size: .7em;
+  line-height: 1;
+  margin-left: -.8em;
+  text-decoration: none;
+  width: .8em;
+}
+.title a:hover::before{
+  content: "#";
+  display: inline-block;
+  font-size: .7em;
+  line-height: 1;
+  margin-left: -.8em;
+  text-decoration: none;
+  width: .8em;
+}
 
 
+#conclusion ~ :last-child {
+  min-height: 40vw;
+}
+#to-top{
+  z-index: 10;
 }
