@@ -1,11 +1,13 @@
 $(document).ready(function () {
-  const catArrayURL = [];; // store URLs
+  const catArrayURL = []; // store URLs
   const catLength = { length: catArrayURL.length };
 
-   // Cached jQuery selectors for various elements of the webpage
+  // Cached jQuery selectors for various elements of the webpage
   const catsContainer = $("#cats-container");
   const catsVertical = $("#cats-vertical");
   const moreCatsButton = $("#more-cats-btn");
+  const ajaxCatButton = $("#ajax-cat-btn");
+  const ajaxJokeButton = $("#ajax-joke-btn");
   const fakeLoading = $("#fake-loading");
   const navBarCloseBtn = $("#nav-close-button");
   const titleSectionSelector = $("#title-section-selector");
@@ -19,6 +21,11 @@ $(document).ready(function () {
   const sideMenu = $("#side-menu");
   const navItemTemplate = $("#nav-item-template").html();
   const horizontalFilm = $("#horizontal-film");
+  const joke = $("#joke");
+  const ajaxSampleUrl =
+    "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,racist&idRange=0-100";
+
+  //
 
   // Render dynamic menu items based on titles in the currently active section
   function renderMenu() {
@@ -41,6 +48,14 @@ $(document).ready(function () {
       sideMenu.append(temp);
     });
   }
+
+  ajaxJokeButton.on("click", function () {
+    $.get(ajaxSampleUrl, function (data) {
+      console.log(data.joke);
+      joke.empty();
+      joke.text(data.joke);
+    });
+  });
 
   sideMenu.on("click", function () {
     navBarCloseBtn.click();
@@ -109,6 +124,15 @@ $(document).ready(function () {
       navBarCloseBtn.click();
     });
   });
+  ajaxCatButton.on("click", function () {
+    if (catArrayURL.length > 0) {
+      console.log(catArrayURL);
+      const randomIndex = Math.floor(Math.random() * catArrayURL.length);
+      $("#show-bgi")
+        .css("background-image", `url('${catArrayURL[randomIndex].url}')`)
+        .text("");
+    }
+  });
 
   moreCatsButton.on("click", function () {
     catsContainer.empty();
@@ -118,16 +142,19 @@ $(document).ready(function () {
     catsContainer.addClass();
     getCats(catArrayURL);
   });
-//for cats ajax to clean the timer
+  //for cats ajax to clean the timer
   $(window).on("scroll", function fun() {
     scrollCatsHandler(catsVertical, fun);
   });
 
   $(window).on("scroll", function () {
-    const progress = Math.floor(1- $(window).scrollTop()*100/($(window).height() - $("body").height())) 
-    console.log(progress);
+    const progress = Math.floor(
+      1 -
+        ($(window).scrollTop() * 100) /
+          ($(window).height() - $("body").height())
+    );
     const scrollTop = 180 - $(window).scrollTop();
-$(".progress.fixed-top").css("width",progress + "%")
+    $(".progress.fixed-top").css("width", progress + "%");
     $("#target").css("transform", "translateY(" + scrollTop + "px)");
     horizontalFilm.css("transform", `translate(${scrollTop}px, 0px)`);
   });
@@ -264,6 +291,15 @@ function toggleCatMeow() {
   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
   toastBootstrap.show();
 }
+
+//
+//
+//
+//
+//
+//
+//
+// code below belong to Bootstrap
 
 (() => {
   /*!
