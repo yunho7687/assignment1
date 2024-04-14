@@ -18,6 +18,9 @@ body {
   transition: background-color 0.3s ease-out, height 0.3s ease-out;
 }
 
+.progress-bar{
+background-color: #712cf9;
+}
 .btn-primary {
   --bs-btn-color: #fff;
   --bs-btn-bg: #712cf9;
@@ -35,9 +38,6 @@ body {
   --bs-btn-disabled-border-color: #a69db6;
 }
 
-.fixed-btn {
-
-}
 .fixed-btn svg {
   width: 40px;
   height: 40px;
@@ -107,18 +107,11 @@ section.section.active {
 nav {
   transition: all;
 }
-#section-1-main {
-  /* margin-top: 58px; */
-}
+
 .nav-item.head-2 {
   margin-left: 2rem;
 }
-#section-2 {
-  /* margin-top: 58px; */
-}
 
-.d-flex.flex-md-row.flex-column {
-}
 div figure.col-md-4 {
   width: 18rem;
 }

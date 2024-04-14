@@ -1,9 +1,8 @@
-const yunhoAvatarLink = "https://avatars.githubusercontent.com/u/75521446?v=4";
-
 $(document).ready(function () {
-  const catArrayURL = [];
+  const catArrayURL = [];; // store URLs
   const catLength = { length: catArrayURL.length };
 
+   // Cached jQuery selectors for various elements of the webpage
   const catsContainer = $("#cats-container");
   const catsVertical = $("#cats-vertical");
   const moreCatsButton = $("#more-cats-btn");
@@ -21,6 +20,7 @@ $(document).ready(function () {
   const navItemTemplate = $("#nav-item-template").html();
   const horizontalFilm = $("#horizontal-film");
 
+  // Render dynamic menu items based on titles in the currently active section
   function renderMenu() {
     sideMenu.empty();
     const titles = $("section.active .title");
@@ -118,13 +118,16 @@ $(document).ready(function () {
     catsContainer.addClass();
     getCats(catArrayURL);
   });
-
+//for cats ajax to clean the timer
   $(window).on("scroll", function fun() {
     scrollCatsHandler(catsVertical, fun);
   });
-  $(window).on("scroll", function () {
-    const scrollTop = 180 - $(window).scrollTop();
 
+  $(window).on("scroll", function () {
+    const progress = Math.floor(1- $(window).scrollTop()*100/($(window).height() - $("body").height())) 
+    console.log(progress);
+    const scrollTop = 180 - $(window).scrollTop();
+$(".progress.fixed-top").css("width",progress + "%")
     $("#target").css("transform", "translateY(" + scrollTop + "px)");
     horizontalFilm.css("transform", `translate(${scrollTop}px, 0px)`);
   });
