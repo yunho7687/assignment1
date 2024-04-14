@@ -11037,6 +11037,8 @@ $(document).ready(function () {
   const toCV = $(".section-cv");
   const sideMenu = $("#side-menu");
   const navItemTemplate = $("#nav-item-template").html();
+const horizontalFilm = $("#horizontal-film")
+
 
 
   function renderMenu() {
@@ -11084,12 +11086,12 @@ $(document).ready(function () {
   toSectionOne.each(function () {
     $(this).on("click", function (e) {
       e.preventDefault();
-      sectionTwo.fadeOut()
-      sectionCV.fadeOut()
-      sectionOne.fadeIn()
       sectionOne.addClass("active");
       sectionTwo.removeClass("active");
       sectionCV.removeClass("active");
+      sectionTwo.fadeOut()
+      sectionCV.fadeOut()
+      sectionOne.fadeIn()
       titleSectionSelector.find("span").text("Section 1")
       renderMenu()
     });
@@ -11097,13 +11099,14 @@ $(document).ready(function () {
   toSectionTwo.each(function () {
     $(this).on("click", function (e) {
       e.preventDefault(e);
-      sectionCV.fadeOut()
-      sectionOne.fadeOut()
-      sectionTwo.fadeIn()
+
 
       sectionOne.removeClass("active");
       sectionTwo.addClass("active");
       sectionCV.removeClass("active");
+      sectionCV.fadeOut()
+      sectionOne.fadeOut()
+      sectionTwo.fadeIn()
       renderMenu()
       titleSectionSelector.find("span").text("Section 2")
     });
@@ -11111,12 +11114,13 @@ $(document).ready(function () {
   toCV.each(function () {
     $(this).on("click", function (e) {
       e.preventDefault(e);
-      sectionOne.fadeOut()
-      sectionTwo.fadeOut()
-      sectionCV.fadeIn()
+
       sectionOne.removeClass("active");
       sectionTwo.removeClass("active");
       sectionCV.addClass("active");
+      sectionOne.fadeOut()
+      sectionTwo.fadeOut()
+      sectionCV.fadeIn()
       renderMenu()
       titleSectionSelector.find("span").text("Curriculum Citae")
     });
@@ -11134,6 +11138,13 @@ $(document).ready(function () {
   $(window).on("scroll", function fun() {
     scrollCatsHandler(catsVertical, fun);
   });
+  $(window).on("scroll",function (){
+        const scrollTop =180- $(window).scrollTop();
+
+$("#target").css("transform", "translateY(" + scrollTop + "px)");
+    horizontalFilm.css("transform",`translate(${scrollTop}px, 0px)` )
+
+  })
 
   catsVertical.on(
     "scroll",
@@ -11148,9 +11159,9 @@ $(document).ready(function () {
       }
     }, 800)
   );
-  sectionOne.fadeIn().delay(500).fadeOut().delay(1700+100).fadeIn()
+  sectionOne.fadeIn().delay(500).fadeOut()
   sectionTwo.fadeOut().delay(500+500).fadeIn().fadeOut()
-  sectionCV.fadeOut().delay(1300 +500).fadeIn().fadeOut()
+  sectionCV.fadeOut().delay(1300 +500).fadeIn()
 
   function getCats(catArrayURL) {
     console.log("sending GET request...");

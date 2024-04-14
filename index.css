@@ -36,13 +36,7 @@ body {
 }
 
 .fixed-btn {
-  height: 2.2rem;
-  width: 2.2rem;
-  position: fixed;
-  bottom: 0rem;
-  right: 0;
-  margin: 2rem;
-  padding: 3px;
+
 }
 .fixed-btn svg {
   width: 40px;
@@ -183,4 +177,41 @@ p#show-bgi {
 }
 #to-top{
   z-index: 10;
+  height: 2.5rem;
+  width: 2.5rem;
+  position: fixed;
+  bottom: 0rem;
+  right: 0;
+  margin: 2rem;
+  padding: 3px;
+}
+#horizontal-slider{
+  height: 250rem;
+}
+#horizontal-camera{
+overflow: hidden;
+  top: 10rem;
+  height: 100vh;
+  position: sticky;
+  width: 97vw;
+
+}
+#horizontal-film{
+  overflow-x:visible;
+  width: fit-content  ;
+  transform:  translate(180px, 0px);
+  height: 100vh;
+
+}
+
+#history-of-a{
+  margin: 1rem 0 0 2rem;
+}
+.history-describe{
+  width: 20rem;
+}
+.history-image img{
+  width: 20rem;
+
+  /* height: 10rem; */
 }
