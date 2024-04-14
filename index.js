@@ -11094,13 +11094,12 @@ const horizontalFilm = $("#horizontal-film")
       sectionOne.fadeIn()
       titleSectionSelector.find("span").text("Section 1")
       renderMenu()
+      navBarCloseBtn.click();
     });
   });
   toSectionTwo.each(function () {
     $(this).on("click", function (e) {
       e.preventDefault(e);
-
-
       sectionOne.removeClass("active");
       sectionTwo.addClass("active");
       sectionCV.removeClass("active");
@@ -11109,6 +11108,7 @@ const horizontalFilm = $("#horizontal-film")
       sectionTwo.fadeIn()
       renderMenu()
       titleSectionSelector.find("span").text("Section 2")
+      navBarCloseBtn.click();
     });
   });
   toCV.each(function () {
@@ -11123,6 +11123,7 @@ const horizontalFilm = $("#horizontal-film")
       sectionCV.fadeIn()
       renderMenu()
       titleSectionSelector.find("span").text("Curriculum Citae")
+      navBarCloseBtn.click();
     });
   });
 
