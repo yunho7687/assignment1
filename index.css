@@ -234,6 +234,11 @@ p#show-bgi {
 }
 .history-image img {
   width: 20rem;
-
-  /* height: 10rem; */
+}
+#avartar {
+  margin-left: 19px;
+}
+#avartar img {
+  margin: 0 auto;
+  width: 100px;
 }
