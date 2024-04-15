@@ -89,6 +89,7 @@ $(document).ready(function () {
       sectionOne.fadeIn();
       titleSectionSelector.find("span").text("Section 1");
       renderMenu();
+      $(window).scrollTop(-1);
       navBarCloseBtn.click();
     });
   });
@@ -103,6 +104,7 @@ $(document).ready(function () {
       sectionTwo.fadeIn();
       renderMenu();
       titleSectionSelector.find("span").text("Section 2");
+      $(window).scrollTop(-1);
       navBarCloseBtn.click();
     });
   });
@@ -118,6 +120,7 @@ $(document).ready(function () {
       sectionCV.fadeIn();
       renderMenu();
       titleSectionSelector.find("span").text("Curriculum Citae");
+      $(window).scrollTop(-1);
       navBarCloseBtn.click();
     });
   });
