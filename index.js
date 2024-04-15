@@ -24,9 +24,7 @@ $(document).ready(function () {
   const joke = $("#joke");
   const ajaxSampleUrl =
     "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,racist&idRange=0-100";
-
-  //
-
+    
   // Render dynamic menu items based on titles in the currently active section
   function renderMenu() {
     sideMenu.empty();
@@ -51,8 +49,7 @@ $(document).ready(function () {
 
   ajaxJokeButton.on("click", function () {
     $.get(ajaxSampleUrl, function (data) {
-      console.log(data.joke);
-      joke.empty();
+
       joke.text(data.joke);
     });
   });
