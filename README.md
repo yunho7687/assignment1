@@ -1,4 +1,4 @@
-# An individual projext
+# An individual project
 
 To start this project you need to start it by a server not as a file.        
 You can just use extensions like "Live Server" to go live the HTML file.       
